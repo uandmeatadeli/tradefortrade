@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>
+
+            Account
+
+        </title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src= '/client/js/account-page.js' async></script> 
+
+        <link rel="stylesheet" href="/client/css/account-page.css">
+
+    </head>
+
+    <body>
+
+        <header>
+            <h1 id = "accountTitle" ></h1>
+        </header>
+
+        <div>
+            <img src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
+        </div>
+
+        <form id = "profilePicture">
+            <h3>Change Profile Picture</h3>
+            <input type="file" name="sampleFile" accept="image/*"/>
+            <input type="submit" class="btn btn-primary"> 
+
+        </form>
+
+        <div>
+            <h3>Current Items</h3>
+        </div>
+
+        <table id="currentItemsContainer">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Description</th>
+                    <th>Item Category</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>  
+            <tbody id="currentItems"></tbody>
+        </table>
+
+        <div>
+            <h3>Add Item</h3>
+        </div>
+
+        <form>
+
+            <label for ="itemName">Item Name:</label>
+            <input type="text" id="itemName" size='60'>
+
+            <label for ="itemDescription">Item Description:</label>
+            <input type="text" id="itemDescription" size='60'>
+
+            <label for ="status">Status</label>
+            <select name="status" id="status">
+                <option value="available">Available</option>
+                <option value="display">Display</option>
+            </select>
+
+            <label for ="itemCategory">Category</label>
+            <select name="itemCategory" id="itemCategory">
+                <option value="comicBook">Comic Book</option>
+                <option value="figurine">Figurine</option>
+            </select>
+        </form>
+
+        <div>
+            <label for = "addItem"></label>
+            <button id = "addItem">Add Item</button>
+        </div>
+
+        <div>
+            <label for = "logout">Want to check out other items?</label>
+            <button id = "feedPageRedirect">Go to Feed</button>
+        </div>
+
+        <div>
+            <button id = "logout">Logout</button>
+        </div>
+
+    </body>
+
+</html>

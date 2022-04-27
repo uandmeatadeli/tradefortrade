@@ -1,0 +1,35 @@
+body{
+  background-image: url("https://img.freepik.com/free-vector/comic-abstract-blue-background_225004-669.jpg?t=st=1650339802~exp=1650340402~hmac=f9c8c0bb5b4f29eab8925b8cccf9f38f5edcb96531276dd5c0449d1a781529b1&w=1800");
+
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+
+  color:white;
+}
+
+header {
+    text-align: center;
+  }
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
