@@ -4,6 +4,10 @@ $('#register').click(function(){
     var email = $('#email').val();
     var username = $('#username').val();
     var password = $('#password').val();
+    var streetAddress = $('#streetAddress').val();
+    var city = $('#city').val();
+    var state = $('#state').val();
+    var postalCode = $('#postalCode').val();
 
     console.log('before jsonstring')
 
@@ -15,15 +19,39 @@ $('#register').click(function(){
         data: jsonString,
         success: function(response) {
             login();
-            alert(response);
+            //alert(response);
         },
 
         error: function(err){
             alert(err);
         }
     });
+
+    var Address = [streetAddress, city, state, postalCode];
+
+   addAddress(Address);
     return false;
 });
+
+function addAddress(Address){
+    var userId = localStorage.getItem('userId')
+    var jsonString = {streetAddress: Address[0], city: Address[1], state: Address[2], postalCode: Address[3], Accounts_userId: userId};
+
+    console.log(jsonString);
+
+    $.ajax({
+        url: 'http://localhost:3000' + '/add-address', 
+        type: "post",
+        data: jsonString,
+        success: function(response) {
+            //alert(response);
+        },
+
+        error: function(err){
+            alert(err);
+        }
+    });
+}
 
 function login(){
     console.log('in login');

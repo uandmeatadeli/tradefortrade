@@ -50,6 +50,20 @@
         </table>
 
         <div>
+            <h3>Requested Trades</h3>
+        </div>
+        
+        <table id="requestedTradeItemsContainer">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th></th>
+                </tr>
+            </thead>  
+            <tbody id="requestedTradeItems"></tbody>
+        </table>
+
+        <div>
             <h3>Add Item</h3>
         </div>
 
@@ -71,6 +85,7 @@
             <select name="itemCategory" id="itemCategory">
                 <option value="comicBook">Comic Book</option>
                 <option value="figurine">Figurine</option>
+                <option value="tradingCard">Trading Card</option>
             </select>
         </form>
 
@@ -80,7 +95,7 @@
         </div>
 
         <div>
-            <label for = "logout">Want to check out other items?</label>
+            <label for = "feedPageRedirect">Want to check out other items?</label>
             <button id = "feedPageRedirect">Go to Feed</button>
         </div>
 

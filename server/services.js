@@ -33,6 +33,26 @@ var services = function(app){
         });
     });
 
+    app.post('/add-address', function(req, res){
+        console.log("adding address");
+        var data = {
+            streetAddress: req.body.streetAddress,
+            city: req.body.city,
+            state: req.body.state,
+            postalCode: req.body.postalCode,
+            Accounts_userId: req.body.Accounts_userId
+        };
+        console.log(data);
+
+        connection.query("INSERT INTO Adresses SET ?;", data, function(err, results){
+            if(err){
+                return res.status(201).send(JSON.stringify({msg: "Error" + err}));
+            } else{
+                return res.status(201).send(JSON.stringify({msg: "SUCCESS"}));
+            }
+        });
+    });
+
     app.get('/login', function(req, res){
         username = req.query.username;
         password = req.query.password;
@@ -111,6 +131,59 @@ var services = function(app){
                 return res.status(201).send(JSON.stringify({msg: "Error" + err}));
             } else{
                 return res.status(201).send(JSON.stringify({msg: "SUCCESS", results: results}));
+            }
+        });
+    });
+
+    app.get('/search-items', function(req, res){
+        var searchedItem = req.query.searchedItem;
+        
+        connection.query("SELECT * FROM Items WHERE itemName = ? ORDER BY itemId DESC;",searchedItem, function(err, results){
+            if (err){
+                return res.status(201).send(JSON.stringify({msg: "Error" + err}));
+            } else{
+                return res.status(201).send(JSON.stringify({msg: "SUCCESS", results: results}));
+            }
+        });
+    });
+
+    app.get('/trade-request', function(req, res){
+        var itemId = req.query.id
+
+        connection.query("SELECT * FROM Items WHERE itemId = ? ;",itemId, function(err, results){
+            if (err){
+                return res.status(201).send(JSON.stringify({msg: "Error" + err}));
+            } else{
+                return res.status(201).send(JSON.stringify({msg: "SUCCESS", results: results}));
+            }
+        });
+    });
+
+    app.post('/post-request', function(req, res){
+        var data = {requestingUserId: req.body.requestingUserId, decidingUserId: req.body.decidingUserId,
+            requestedItemId: req.body.requestedItemId}
+            
+            console.log(data);
+
+        connection.query("INSERT INTO Trades(requestingUserId, decidingUserId, requestedItemId) VALUES (?) ;",data, function(err, results){
+            if (err){
+                return res.status(201).send(JSON.stringify({msg: "Error" + err}));
+            } else{
+                return res.status(201).send(JSON.stringify({msg: "SUCCESS"}));
+            }
+        });
+    });
+
+    app.post('/post-offered-item', function(req, res){
+        var data = {offeredItemId: req.body.offeredItemId};
+            
+            console.log(data);
+
+        connection.query("UPDATE Trades SET offeredItemId = ?;",data, function(err, results){
+            if (err){
+                return res.status(201).send(JSON.stringify({msg: "Error" + err}));
+            } else{
+                return res.status(201).send(JSON.stringify({msg: "SUCCESS"}));
             }
         });
     });
